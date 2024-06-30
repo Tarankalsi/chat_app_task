@@ -1,0 +1,44 @@
+{
+    "name": "Chat App",
+    "short_name": "Chat App",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "pwa-64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "maskable-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot1.png",
+            "sizes": "540x720",
+            "type": "image/png"
+        },
+        {
+            "src": "screenshot-wide.png",
+            "sizes": "1080x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ]
+}
