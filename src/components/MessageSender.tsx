@@ -21,7 +21,7 @@ function Avatar({ img }: { img: string }) {
     return (
       <div className="relative">
         <img className='h-6 w-6 rounded-full' src={img} alt="" />
-        <img className="absolute h-3 w-3 left-3.5 top-3.5 z-auto" src="/src/assets/social-media.png" alt="" />
+        <img className="absolute h-3 w-3 left-3.5 top-3.5 z-auto" src={"https://res.cloudinary.com/daygfelat/image/upload/social-media_muiodl.png"} alt="" />
       </div>
     );
   }
