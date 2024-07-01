@@ -15,25 +15,36 @@ export default function TextArea() {
                     placeholder="Message"
                 />
                 <div className="flex gap-4 md:gap-6 lg:gap-8">
-                    <button type="button" className='relative' onClick={() => attachmentMenu ?setAttachmentMenu(false) :setAttachmentMenu(true)}>
+                    <button type="button" className='relative' onClick={() => attachmentMenu ? setAttachmentMenu(false) : setAttachmentMenu(true)}>
                         <FontAwesomeIcon className="text-gray-500 hover:text-gray-700 transition-colors duration-200" icon={faPaperclip} />
                         {attachmentMenu && (
-                            <div className='absolute right-0 w-28 bottom-full bg-messageAttachment gap-2 text-white  flex justify-center  rounded-full mt-1 shadow-xl'>
+                            
+                                <div className='relative bottom-full -top-9'>
 
-                                <button className='py-2 px-1 h-10 cursor-pointer text-sm font-semibold'>
-                                    <FontAwesomeIcon className='w-4 h-4 ' icon={faCamera} />
 
-                                </button>
-                                <button className='py-1 px-1 h-10  flex justify-center items-center cursor-pointer text-sm font-semibold'>
-                                    <FontAwesomeIcon className='w-4 h-4 ' icon={faVideo} />
+                                    <div className='absolute py-0.5 -right-12 w-28 bottom-full bg-messageAttachment gap-2 text-white  flex justify-center  rounded-full mt-1 shadow-xl'>
 
-                                </button>
-                                <button className='py-2 px-1 h-10 flex justify-center items-center cursor-pointer text-sm font-semibold'>
-                                    <FontAwesomeIcon className='w-4 h-4  ' icon={faStickyNote} />
+                                        <button className='py-2 px-1 h-10 cursor-pointer text-sm font-semibold'>
+                                            <FontAwesomeIcon className='w-4 h-4 ' icon={faCamera} />
 
-                                </button>
+                                        </button>
+                                        <button className='py-1 px-1 h-10  flex justify-center items-center cursor-pointer text-sm font-semibold'>
+                                            <FontAwesomeIcon className='w-4 h-4 ' icon={faVideo} />
 
+                                        </button>
+                                        <button className='py-2 px-1 h-10 flex justify-center items-center cursor-pointer text-sm font-semibold'>
+                                            <FontAwesomeIcon className='w-4 h-4  ' icon={faStickyNote} />
+
+                                        </button>
+
+                                    </div>
+                                    <div className=" absolute w-0 h-0 border-l-[8px] border-l-transparent border-t-[7px]  border-t-messageAttachment border-r-[8px] border-r-transparent">
+                                    </div>
+                               
                             </div>
+
+
+
                         )}
                     </button>
                     <button type="button"  >

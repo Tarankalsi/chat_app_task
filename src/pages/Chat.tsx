@@ -57,11 +57,13 @@ export default function Chat() {
   const chatEndRef = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(0)
   const loadingMoreChats = useRef(false)
-const initialLoad = useRef(true)
+
 
   try {
     useEffect(() => {
       const fetchChats = async (pageNumber: number) => {
+
+
         try {
           const response = await axios.get(`https://qa.corider.in/assignment/chat?page=${pageNumber}`)
           if (pageNumber === 0) {
@@ -69,19 +71,25 @@ const initialLoad = useRef(true)
           } else {
             setChatData(prevChats => [...response.data.chats, ...prevChats])
           }
+
+
           loadingMoreChats.current = false
         } catch (error) {
+          console.error("Error fetching chats:", error);
 
         }
       }
 
       fetchChats(page)
-      
+
     }, [page])
 
     useEffect(() => {
-      if (chatEndRef.current && initialLoad.current) {
+      if (chatEndRef.current && page === 0) {
+
         chatEndRef.current.scrollIntoView({ behavior: "instant" }); // No smooth transition on initial load
+
+
       }
 
     }, [chatData])
@@ -97,42 +105,45 @@ const initialLoad = useRef(true)
       const scrollTop = document.documentElement.scrollTop;
       const prevScrollHeight = document.documentElement.scrollHeight;
       // const clientHeight = window.innerHeight;
-   
+
       if (scrollTop === 0 && !loadingMoreChats.current) {
         loadingMoreChats.current = true
-          setPage(prevPage => prevPage + 1)
 
-          await new Promise(resolve => setTimeout(resolve, 100));
+        
 
-          const newScrollPosition = document.documentElement.scrollHeight - prevScrollHeight + scrollTop;
+        const currentScrollPosition = document.documentElement.scrollTop;
 
+        setPage(prevPage => prevPage + 1)
+        
+        
 
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        const newScrollPosition = document.documentElement.scrollHeight - prevScrollHeight + currentScrollPosition;
+
+      
           window.scrollTo({
             top: newScrollPosition,
-            behavior: "instant" // or "smooth" if you prefer a smooth scroll
+            behavior: "smooth",
           });
-
-          loadingMoreChats.current = false;
+        
+        loadingMoreChats.current = false;
       }
-     
     }
-
-
-
     window.addEventListener('scroll', handleScroll)
 
-   return () =>{ window.removeEventListener('scroll',handleScroll)}
+    return () => { window.removeEventListener('scroll', handleScroll) }
   }, [])
 
 
 
   return (
     <div className="bg-chatBackground min-h-screen flex flex-col">
-      <div className="fixed bg-chatBackground">
+      <div className="fixed bg-chatBackground z-50">
         <Header />
       </div>
       <div className="mb-20 overflow-y-auto mt-36" >
-    
+
         {
           chatData.map((chat: chatProp) => (
             chat.sender.self ?
@@ -146,6 +157,7 @@ const initialLoad = useRef(true)
         <div ref={chatEndRef} /> {/* Attaching the ref to this div */}
 
       </div>
+
       <div className="fixed bottom-0 left-0 right-0 bg-chatBackground pb-8">
         <TextArea />
       </div>

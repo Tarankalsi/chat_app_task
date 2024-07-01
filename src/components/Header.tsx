@@ -9,8 +9,8 @@ export default function Header() {
 
     const [chatMenu, setChatMenu] = useState(false)
     return (
-        <div>
-            <div className='flex justify-between mx-6 pt-11'>
+        <div className='z-50'>
+            <div className='flex justify-between mx-6 pt-11 '>
                 <button className='flex justify-center items-center gap-5'>
                     <FontAwesomeIcon className='h-6 2-6 ' icon={faArrowLeft} />
                     <h3 className='text-2xl font-semibold'>Trip 1</h3>
